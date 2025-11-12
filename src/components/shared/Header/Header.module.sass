@@ -1,0 +1,28 @@
+@use 'variables' as v
+.Header
+    padding-top: 10px
+    
+    ul
+        display: flex
+        flex-direction: row
+        gap: 2rem
+        justify-content: center
+        
+        a
+            text-decoration: none 
+            font-size: 1.5rem
+           
+        li
+            color: v.$gradient
+            list-style: none
+            
+    > h1
+        font-size: 3rem
+        background-image: linear-gradient(270deg, #4f56ff, #ff4980)
+        background-clip: text
+        color: v.$color_primary
+    
+    > h2
+        font-size: 2rem
+        color: v.$color_secondary
+        text-align: center

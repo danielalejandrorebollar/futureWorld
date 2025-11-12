@@ -1,0 +1,22 @@
+@use 'variables' as v
+.Hero
+    text-align: center
+    margin-bottom: 2rem
+    z-index: 10
+
+    & > h1
+        font-size: 4rem
+        width: 60%
+        background: linear-gradient(270deg, #4f56ff, #ff4980)
+        background-clip: text
+        -webkit-text-fill-color: transparent
+        margin-bottom: 0
+        margin: 0 auto
+        letter-spacing: 0.05em
+
+    & > h2
+        font-size: 1.5rem
+        margin: 0 0 3rem 0
+        color: v.$color_secondary
+        text-align: center
+        

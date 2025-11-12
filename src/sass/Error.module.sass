@@ -1,0 +1,34 @@
+@use 'variables' as v
+.Error
+    margin: 0
+    padding: 0
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+
+    h1
+        text-align: center
+        font-weight: 900
+        font-size: 3rem
+        background: linear-gradient(270deg, #4f56ff, #ff4980)
+        background-clip: text
+        -webkit-text-fill-color: transparent
+        margin: 0
+    
+    &__message
+        font-size: 4rem
+        font-weight: 900
+        width: 60%
+        background: linear-gradient(270deg, #4f56ff, #ff4980)
+        background-clip: text
+        -webkit-text-fill-color: transparent
+    
+    &__button
+        background: linear-gradient(270deg, #4f56ff, #ff4980)
+        color: v.$color_secondary
+        border-radius: 10px
+        font-size: 1rem
+        padding: 10px
+        width: fit-content
+        font-weight: 700

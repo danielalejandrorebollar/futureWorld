@@ -1,0 +1,41 @@
+@use 'variables' as v
+.Description
+    z-index: 10
+    display: grid
+    grid-template-columns: 1fr 1fr
+    max-width: 1000px
+    margin: 2rem auto
+    column-gap: 2rem
+    padding: 2rem 2.5rem
+    border-radius: 1.375rem
+
+    &__button 
+        background: transparent
+        border: none
+        cursor: pointer
+       
+        &--border
+            border: 3px solid v.$main-contrast
+         
+    &__imageContainer
+        position: relative
+        width: 100%
+        height: 300px
+        & > img
+            object-fit: conver
+            box-shadow: 0 0 4rem rgba(255, 255, 255, 0.2)
+
+    &__text
+        
+        div
+            background-color: v.$color_secondary_transparent
+            & > h2
+                margin:0
+                font-size: 2rem
+                font-weight: 600
+                font-family: Raleway
+                color: v.$color_primary
+            & > p
+                font-size: 1.5rem
+                font-family: Raleway
+                line-height: 1.75
