@@ -1,0 +1,46 @@
+@use 'variables' as v
+    
+.ProductViewItemsOrder
+    display: flex
+    justify-content: space-around
+    padding-top: 10px
+
+    &__contenedor
+        
+        display: flex
+        align-items: center
+        flex-direction: row
+        border-radius: 2px
+        border: 1px solid #222337
+        
+        
+        &__span
+            text-align: center
+            background: #222337   
+            color:  v.$color_third   
+            font-weight: 500
+            font-size: 1.5rem
+            width: 20px
+            padding: 3px
+            width: 20px
+            padding: 3px
+            &:hover
+                cursor: pointer
+        
+        &__item
+            background: #222337   
+            width: 20px
+            padding: 3px
+            font-size: 1.5rem
+            text-align: center
+            
+            
+    
+    &__addToCart
+        background: v.$gradient
+        color: v.$text_color
+        border-radius: 2px
+        border: none
+        width: 60%
+        &:hover
+            cursor: pointer

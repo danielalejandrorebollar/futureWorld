@@ -1,0 +1,79 @@
+@use 'variables' as v
+
+.ShoppingCart
+    background-color: transparent
+    border: none
+    color: white
+    
+    position: relative
+
+    &__counter
+        position: absolute
+        left: -.2rem
+        top: -.8rem
+        border-radius: 40px
+        padding: 2px
+        background-color: v.$main_contrast
+        z-index: 1
+        width: 1rem
+        height: 1rem
+        font-size: 1rem
+        
+
+
+    &__cart
+        background-color: transparent
+        border: none
+        cursor: pointer
+        color: white
+        position: relative
+        
+
+
+    
+
+        & > svg
+            width: 1.5rem
+            height: 1.5rem
+            fill: v.$text_color
+    
+    &__items
+        position: absolute
+        background: v.$color_primary
+        border: 1px solid v.$border_color
+        border-radius: 8px
+        right: 0
+        max-width: 320px
+        min-width: 250px
+        padding: 1rem
+       
+    
+    &__buyButton
+        border: none
+        border-radius: 8px
+        color: v.$text_color
+        background: v.$main_contrast
+        width: 80%
+        padding: .5rem
+        cursor: pointer
+        font-weight: bold
+        margin-top: 5px
+        text-align: center
+
+
+.ShoppingCartItem
+    display: grid
+    grid-template-columns: 1fr 2fr 1fr 1fr
+    column-gap: 2px
+    row-gap: 2px
+    grid-gap: 20px 5px;
+    
+    &__button
+        background-color: transparent
+        border: none
+        cursor: pointer
+        color: white
+        & > svg
+                width: 1.5rem
+                height: 1.5rem
+                fill: v.$text_color

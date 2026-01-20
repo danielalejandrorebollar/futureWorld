@@ -7,6 +7,16 @@ const shopifyUrls = {
             url: `${env.SHOPIFY_HOSTNAME}/admin/api/2025-10/graphql.json`,
             token: env.SHOPIFY_TOKEN,
         }
+    },
+    collections:{
+        'all':{
+            url: `${env.SHOPIFY_HOSTNAME}/admin/api/2025-10/graphql.json`,
+            token: env.SHOPIFY_TOKEN,  
+        },
+        'products':{
+            url: `${env.SHOPIFY_HOSTNAME}/admin/api/2025-10/graphql.json`,
+            token: env.SHOPIFY_TOKEN,  
+        }
     }
 }
 

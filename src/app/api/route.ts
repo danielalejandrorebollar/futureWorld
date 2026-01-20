@@ -1,4 +1,4 @@
-import { getProducts } from "app/services/shopify"
+import { getProducts } from "app/services/shopify/products"
 
 export const  GET = async () => {
     const message = "prueba de api como endpoint"

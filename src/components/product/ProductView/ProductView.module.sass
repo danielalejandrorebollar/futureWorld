@@ -1,0 +1,36 @@
+@use 'variables' as v
+
+.ProductView
+    display: flex
+    margin-top: 50px
+    flex-direction: row
+    width: 55%;
+    margin: 0 auto;
+    margin-top: 50px
+    justify-content: stretch
+    
+    
+    h1
+        font-size: 3rem
+    &__images
+        
+        position: relative
+        width: 75%
+        img
+            border-radius: 10px
+            
+            box-shadow: 0 0 2rem rgba(255, 255, 255, 0.2)
+    &__info
+        padding: 0 30px
+        display: flex
+        flex-direction: column
+
+        &__category
+            color: v.$text_color
+            border: 1px solid v.$color_third
+            padding: 5px
+            border-radius: 20px
+            text-align: center
+            text-shadow: 0px 0px 3px white
+        &__price
+            font-size: 3rem

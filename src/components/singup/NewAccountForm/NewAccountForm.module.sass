@@ -1,0 +1,52 @@
+@use 'variables' as v
+.NewAccountForm
+    display: flex
+    flex-direction: column
+    align-items:  center
+    margin-top: 40px
+
+    &__title
+        color: v.$gradient
+    &__form
+        display: flex
+        flex-direction: column
+        row-gap: 50px
+        width: 400px
+
+        input 
+            border-bottom: 1px solid v.$color_third
+            border: none
+            background: v.$color_primary
+            color: v.$color_secondary
+            border: none
+            border-bottom: 1px solid v.$color_third
+            &:placeholder-shown
+                font-size: 1.5rem
+
+        input[name="submit"] 
+            border: none
+            border: 1px solid v.$color_third
+            border-radius: 20px
+            padding: 10px
+            &:hover
+                background-color: #0056b3;
+
+            &:active
+                background-color: #004085;
+                transform: translateY(1px);
+            
+        &__rowGroup
+            display: flex
+            column-gap: 20px
+
+            input[name="first_name"] 
+                border: none
+                border-bottom: 1px solid v.$color_third
+                
+                width: 50%
+            input[name="last_name"] 
+                border: none
+                border-bottom: 1px solid v.$color_third
+                width: 50%
+
+        

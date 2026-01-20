@@ -7,11 +7,14 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({product}: ProductCardProps) => {
-    console.log(product)
+    
     const imageSrc = product.images.edges[0].node.originalSrc
+    const index = product.id.lastIndexOf("/")
+    const id = product.id.slice(index+1,product.id.length)
+    
   return (
 
-    <Link href={`/articulo/${product.handle}?id={product.id}`} className={styles.ProductCard__link}>
+    <Link href={`/product/${product.handle}?id=${id}`} className={styles.ProductCard__link}>
         <article>
             <div className={styles.ProductCard__image}>
                 <Image
