@@ -43,12 +43,12 @@ const getCollections = async () => {
 
  }catch (error) {
     console.error("Error al obtener coleccion:", error);
-    return [];
+    return null;
   }
 };
 
-const getCollectionProducts = async (id:string):Promise<ProductType[]> => {
-  console.log("id de la coleccion",id)
+const getCollectionProducts = async (id:string):Promise<ProductType[] | null> => {
+  // console.log("id de la coleccion",id)
   
 
 
@@ -119,20 +119,20 @@ const getCollectionProducts = async (id:string):Promise<ProductType[]> => {
 
     
     //const {data:{collectionByIdentifier}} = await response.json();
-    const json = await response.json() as GraphQLResponse<CollectionQuery>;
+    const json = (await response.json()) as GraphQLResponse<CollectionQuery>;
     //const {data:{collections}} = await response.json();
     const  {data:{collection:{products:{nodes}}}} = json
-    console.log(json)
+    // console.log(json)
     // const nodes = json.data.collection.products.nodes
     return nodes
 
  }catch (error) {
     console.error("Error al obtener Productos de la coleccion:", error);
-    return [];
+    return null;
   }
 };
 
-const getCollectionByIdentifier = async (handle: string):Promise<Collection | []> => {
+const getCollectionByIdentifier = async (handle: string):Promise<Collection> => {
   
  const  query = `
  {
@@ -167,12 +167,12 @@ const getCollectionByIdentifier = async (handle: string):Promise<Collection | []
 
     const json  = (await response.json()) as GraphQLResponse<CollectionByIdentifier>;
     const {data:{collectionByIdentifier}} = json 
-    console.log(collectionByIdentifier)
+    // console.log(collectionByIdentifier)
     return collectionByIdentifier
 
  }catch (error) {
     console.error("Error al obtener coleccion:", error);
-    return [];
+    throw new Error("Error al obtener coleccion:")
   }
 };
 

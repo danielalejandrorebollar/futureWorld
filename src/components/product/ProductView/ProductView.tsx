@@ -12,7 +12,7 @@ interface ProductViewProps {
 
 
 const ProductView = ({product}: ProductViewProps) => {
-console.log(product)
+// console.log(product)
   // const route = useRouter()
   // if(!product){
   //   route.push('/')

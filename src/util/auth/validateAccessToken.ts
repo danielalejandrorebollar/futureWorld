@@ -5,11 +5,15 @@ import { GraphQLClient } from 'graphql-request';
 import { cookies } from 'next/headers';
 
 
-const validateAccessToken = async () => {
+const validateAccessToken = async ():Promise<CustomerResponse> => {
     
 
      const cookieStore = await cookies();
      const token = cookieStore.get("accesToken")?.value
+     if(!token){
+        console.log("No esta logueado")
+        return {ok:false,error:'No token'};
+     }
     const graphClient: GraphQLClient = GraphQLClientSingleton.getInstance().getClient();
 
     try {
@@ -19,11 +23,11 @@ const validateAccessToken = async () => {
          getCustomerAccesToken:token
          })
 
-         return {ok:true,customer};
+         return  { ok:true, customer };
 
     }catch(error){
-        console.log(error,"falló")
-        return {ok:false,error};
+        console.log("falló",error)
+        return { ok:false, error };
     }
  
 }

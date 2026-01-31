@@ -1,2 +1,3 @@
-export { ShoppingCart } from './ShoppingCart'
-export {ShoppingCartItem} from './ShoppingCartItem'
+import ShoppingCart from './ShoppingCart'
+export default ShoppingCart
+export { ShoppingCartItem } from './ShoppingCartItem'

@@ -37,6 +37,8 @@
         flex-direction: row
         align-items: center
         gap: 10px
+        position: relative
+        z-index: 40
 
         a
             text-decoration: none 
@@ -46,3 +48,41 @@
             color: v.$color_secondary
             list-style: none
             font-size: 1.5rem
+        
+
+        &__menuUser
+            position: absolute
+            background: v.$color_primary
+            border: 1px solid v.$border_color
+            border-radius: 8px
+            right: 0
+            max-width: 320px
+            
+        &__buttonLogin
+            background-color: transparent
+            border: none
+            cursor: pointer
+            color: white
+            position: relative
+        
+        &__myAccount
+            background-color: transparent
+            border: none
+            color: white
+            position: absolute
+            left: 0
+            display: block
+            display: flex
+            flex-direction: column
+
+        &__buttonLogout
+            background-color: transparent
+            border: none
+            cursor: pointer
+            color: white
+            left: 0
+            display: block
+            
+            
+                
+       

@@ -14,6 +14,7 @@ type ProductType = {
     handle: string;
     tags: string;
     variants: {nodes:{price:string}[]}
+    gql_id:string
 
 }
 
@@ -80,5 +81,57 @@ type ProductResult =
     quantity: number;
     id: string;
     image: string;
+    gql_id: string
 
   }
+
+type CustomerResponse = {
+    ok: boolean;
+    customer?: undefined;
+    error?: undefined;
+} | {
+    ok: boolean;
+    customer: {
+      firstName:string
+      email: string
+    };
+    error?: undefined;
+} | {
+    ok: boolean;
+    error: unknown;
+    customer?: undefined;
+}
+
+type Customer = {
+  customer: {
+    customer:string,
+
+  }
+}
+
+type LineItemEdge = {
+      cursor:string
+      node: {
+        title: string;
+        quantity: number
+      }
+    
+};
+ type Order = {
+  id: string;
+  orderNumber: string;
+  lineItems: {edges: LineItemEdge[]}
+};
+
+ type OrdersSuccess = {
+  ok: true;
+  totalOrders: number;
+  orders: Order[];
+};
+
+ type OrdersError = {
+  ok: false;
+  error: unknown;
+};
+
+ type OrdersResponse = OrdersSuccess | OrdersError;

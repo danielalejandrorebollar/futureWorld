@@ -39,6 +39,7 @@ export const createAccesToken = async (props:createAccesTokenProps) =>{
         // return {customerAccessToken,ok:"todo bien",cookie:coo}
     } catch (error) {
         console.log("falló.............................\n",error);
+        return {ok:false,error}
     }
     
 

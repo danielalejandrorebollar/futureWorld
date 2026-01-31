@@ -51,7 +51,7 @@ export const getProducts = async (): Promise<ProductType[]> => {
     } 
 
     const {data:{products:{nodes}}} = (await response.json()) as GraphQLResponse<ProductsQuery>;
-    //console.log(nodes)
+    // console.log(nodes)
     
     return nodes  ;
 
@@ -120,7 +120,7 @@ export const getProductById = async (id:string): Promise<ProductResult> => {
     } 
 
     const {data:{product}} = await response.json();
-    console.log(product)
+    // console.log(product)
    return { 
             ok:true,
             data:{
@@ -135,6 +135,7 @@ export const getProductById = async (id:string): Promise<ProductResult> => {
               tags: product.tags[0],
               images:product.images.edges,
               variants: product.variants.nodes[0].price,
+              gql_id: product.variants.nodes[0].id
             }
       }  ;
 

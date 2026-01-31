@@ -8,9 +8,9 @@ interface PropsProductPage {
   searchParams: Promise<{[key: string]: string | undefined }>
 }
 
-export const generateMetada = async ({searchParams}: PropsProductPage) =>{
+export const generateMetadata = async ({searchParams,params}: PropsProductPage) =>{
   const { id } =  await searchParams
-  // const { handle } =  await params
+  const { handle } =  await params
   // let product
   // if(!id){
   //   console.log("no existióoooooooooooo")
@@ -39,14 +39,15 @@ console.log("desde generateMEtadata",product.data)
 
 const ProductPage = async (props: PropsProductPage) => {
   const { handle } = await  props.params
-  const { id } =   props.searchParams
-  // console.log(id,handle)
+  const { id } =  await props.searchParams
+  console.log("este es SearchParams \n",await props.searchParams,"\n este es el handle \n",handle)
   // let product: ProductResult = []
   if(!id){
     console.log("no existióoooooooooooo")
     redirect('/store')
   }
   const product = await getProductById(id)
+  // console.log(product)
   // }else{
   //   product = await getProductById(id)
   //   if(!product)
@@ -58,7 +59,7 @@ if (!product.ok) {
   throw new Error(`HTTP error: ${product.error}`);
    redirect('/store')
 }
-  console.log(product.data)
+  // console.log(product.data)
   return (
     <ProductView product={product.data}/>
     

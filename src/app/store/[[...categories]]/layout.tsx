@@ -8,12 +8,12 @@ async function Layout({children}:{children:React.ReactNode}){
 
     const collections = await getCollections()
     //console.log(collecitons)
-    console.log(typeof(collections),collections,'colecciones')
+    // console.log(typeof(collections),collections,'colecciones')
     return (
         <main>
             <nav className={styles.Categories}>
                 {
-                    collections.map((collection) => (
+                    collections?.map((collection) => (
                         <Link className={styles.Categories__link} href={'/store/'+collection.node.handle} key={collection.node.id}>{collection.node.title}
                         </Link>
                     ))

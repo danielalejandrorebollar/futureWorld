@@ -2,10 +2,12 @@
 
 import { GraphQLClientSingleton } from 'app/graphql'
 import { createUserMutation } from 'app/graphql/mutations/createUserMutation'
+import { createCartMutation } from 'app/graphql/mutations/createCartMutation'
 import {GraphQLClient} from 'graphql-request'
 import { createAccesToken } from 'app/util/auth/createAccesToken'
 import { redirect } from 'next/navigation'
 import { cookies } from "next/headers"
+import { validateAccessToken } from 'app/util/auth/validateAccessToken'
 
 
 const handleCreateUser = async (formData:FormData) => {
@@ -98,7 +100,7 @@ const handleCreateUser = async (formData:FormData) => {
     const userToken =  await createAccesToken({email:formDataObject.email as string, password:formDataObject.password as string})
     console.log(userToken)
     if(userToken?.ok){
-      console.log('linea 99 ',userToken)
+      // console.log('linea 99 ',userToken)
       const {accessToken, expiresAt} = userToken.customerAccessToken
         cookieStore.set("accesToken",accessToken,{
             path:'/',
@@ -116,7 +118,7 @@ const handleCreateUser = async (formData:FormData) => {
 
   } catch (error) {
     console.log({mensaje:error,ok:"falló"})
-    return
+    return {ok:false,error}
   }
   
   redirect('/store')
@@ -126,5 +128,53 @@ const handleCreateUser = async (formData:FormData) => {
 
 }
 
+const handleCreateCart = async(items: CartItem[]) =>{
 
-export { handleCreateUser, handleLogin }
+  const cookieStore = await cookies()
+  const accessToken = cookieStore.get('accesToken')?.value as string
+  // console.log(items[0])
+  if(!accessToken) 
+    return {ok:false,noToken:true}
+  
+  const graphClient: GraphQLClient = GraphQLClientSingleton.getInstance().getClient();
+  const result: CustomerResponse = await validateAccessToken();
+  const {customer} = result 
+  const variables = {
+    input:{
+      buyerIdentity:{
+        customerAccessToken: accessToken,
+        email: customer?.email
+      },
+      lines: items.map(item=>({
+        merchandiseId: item.gql_id,
+        quantity: item.quantity
+      }))
+      
+    }
+  }
+  console.log(variables.input.lines)
+  
+  try {
+      const { cartCreate}: {
+      cartCreate?:{
+        cart?:{
+          checkoutUrl:string
+        }
+      }
+    } = await graphClient.request(createCartMutation,variables)
+  return {ok:true, checkoutUrl:cartCreate?.cart?.checkoutUrl}
+  
+  } catch (error) {
+    console.log("error al hacer graphql de crear Cart",error)
+    return {ok:false, error,variables}
+  }
+  
+}
+
+const handleLogout = async () =>{
+  const cookieStore = await cookies()
+  cookieStore.delete('accesToken')
+  // redirect('/store')
+}
+
+export { handleCreateUser, handleLogin, handleCreateCart, handleLogout }
