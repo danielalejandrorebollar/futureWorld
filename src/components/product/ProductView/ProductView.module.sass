@@ -17,12 +17,12 @@
         width: 75%
         img
             border-radius: 10px
-            
             box-shadow: 0 0 2rem rgba(255, 255, 255, 0.2)
     &__info
         padding: 0 30px
         display: flex
         flex-direction: column
+        
 
         &__category
             color: v.$text_color
@@ -33,3 +33,44 @@
             text-shadow: 0px 0px 3px white
         &__price
             font-size: 3rem
+
+    @media screen and (max-width: 920px )
+    
+        display: flex
+        margin-top: 50px
+        flex-direction: column
+        width: 70%;
+        margin: 0 auto;
+        margin-top: 50px
+        justify-content: center
+        
+
+        &__images
+            text-align: center
+            min-width: 80%
+            img
+                width: 90%
+                height: 90%
+            
+        &__info
+            width: 60%
+
+    @media screen and (max-width: 400px )
+    
+        display: flex
+        margin-top: 50px
+        flex-direction: column
+        width: 70%;
+        margin: 0 auto;
+        margin-top: 50px
+        justify-content: center
+        
+
+        &__images
+            text-align: center
+            width: 80%
+            img
+                width: 90%
+                height: 90%
+        &__info
+            width: 60%

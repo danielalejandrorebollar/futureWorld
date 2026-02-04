@@ -35,8 +35,8 @@ export default function RootLayout({ children,}: Readonly<{children: React.React
     <html lang="en">
       {/* <body className={`${geistSans.variable} ${geistMono.variable}`}> */}
       <body className={roboto.className}>
-       <Header/>
-       
+      <Header/>
+      
         {children}
       <Footer/>
       </body>
