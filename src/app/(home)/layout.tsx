@@ -10,7 +10,7 @@ export default function HomeLayout( {children}: {children:React.ReactNode}){
             <div className={styles.ContenedorHero}>
                 <Image 
                     className={styles.ContenedorHero__img}
-                    src="/images/maestro.jpg"
+                    src="/images/games.jpg"
                     alt="products" 
                     fill
                     quality={100}
