@@ -13,7 +13,7 @@ const nextConfig: NextConfig = {
 
     sassOptions:{
       includePaths:[path.join(__dirname, 'src/sass')],
-      // prependData:`@import "main.sass"`,
+      prependData:`@import "main.sass"`,
     },
     images:{
       remotePatterns:[{
