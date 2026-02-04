@@ -5,7 +5,7 @@ import { getProducts } from "app/services/shopify/products";
 import styles from './page.module.sass'
 // import { text } from "stream/consumers";
 
-// export const runtime = "edge"
+export const runtime = "edge"
 
 interface CateogoryProps{
     params:Promise<{
