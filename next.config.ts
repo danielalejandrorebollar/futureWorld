@@ -12,8 +12,8 @@ const nextConfig: NextConfig = {
   /* config options here */
 
     sassOptions:{
-      includePaths:[path.join(__dirname, 'src/sass')],
-      prependData:`@import "main.sass"`,
+      includePaths:[path.join(__dirname, './')],
+      // prependData:`@use 'variables' as v`,
     },
     images:{
       remotePatterns:[{

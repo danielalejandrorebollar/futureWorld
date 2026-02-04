@@ -1,7 +1,6 @@
 "use client"
 import styles from './Description.module.sass'
 import classNames from 'classnames/bind'
-import Image from 'next/image'
 import { useState } from 'react'
 
 export const Description = () => {

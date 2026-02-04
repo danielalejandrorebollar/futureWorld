@@ -19,17 +19,17 @@ const validateAccessToken = async ():Promise<CustomerResponse> => {
     try {
  
          
-         const {customer}  = await graphClient.request(customerName,{
-         getCustomerAccesToken:token
-         })
+        const {customer}  = await graphClient.request(customerName,{
+        getCustomerAccesToken:token
+        })
 
-         return  { ok:true, customer };
+        return  { ok:true, customer };
 
     }catch(error){
         console.log("falló",error)
         return { ok:false, error };
     }
- 
+
 }
 
 export { validateAccessToken }
