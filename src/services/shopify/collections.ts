@@ -47,7 +47,7 @@ const getCollections = async () => {
   }
 };
 
-const getCollectionProducts = async (id:string):Promise<ProductType[] | null> => {
+const getCollectionProducts = async (id:string):Promise<ProductsResult> => {
   // console.log("id de la coleccion",id)
   
 
@@ -114,7 +114,8 @@ const getCollectionProducts = async (id:string):Promise<ProductType[] | null> =>
     });
 
     if (!response.ok) {
-      throw new Error(`HTTP error: ${response.status}`);
+      // throw new Error(`HTTP error: ${response.status}`);
+      return {ok:false,error:response.status}
     }
 
     
@@ -124,15 +125,17 @@ const getCollectionProducts = async (id:string):Promise<ProductType[] | null> =>
     const  {data:{collection:{products:{nodes}}}} = json
     // console.log(json)
     // const nodes = json.data.collection.products.nodes
-    return nodes
+    
+    return {ok:true, data:nodes}
 
  }catch (error) {
     console.error("Error al obtener Productos de la coleccion:", error);
-    return null;
+    return {ok:false,error}
+    
   }
 };
 
-const getCollectionByIdentifier = async (handle: string):Promise<Collection> => {
+const getCollectionByIdentifier = async (handle: string):Promise<CollectionResult> => {
   
  const  query = `
  {
@@ -162,17 +165,19 @@ const getCollectionByIdentifier = async (handle: string):Promise<Collection> => 
     });
 
     if (!response.ok) {
-      throw new Error(`HTTP error: ${response.status}`);
+      // throw new Error(`HTTP error: ${response.status}`);
+      return {ok:false,error: response.status}
     }
 
     const json  = (await response.json()) as GraphQLResponse<CollectionByIdentifier>;
     const {data:{collectionByIdentifier}} = json 
     // console.log(collectionByIdentifier)
-    return collectionByIdentifier
+    return {ok:true, data:collectionByIdentifier}
 
  }catch (error) {
     console.error("Error al obtener coleccion:", error);
-    throw new Error("Error al obtener coleccion:")
+    // throw new Error("Error al obtener coleccion:")
+    return {ok:false, error}
   }
 };
 

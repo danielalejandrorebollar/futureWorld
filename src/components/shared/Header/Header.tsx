@@ -12,7 +12,7 @@ const Header = async () =>{
 
 
   const result: CustomerResponse = await validateAccessToken()
-
+  
     return(
          <HeaderClient customer={result}/>
     )

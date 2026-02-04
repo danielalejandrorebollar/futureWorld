@@ -8,7 +8,13 @@ import {  usePathname } from 'next/navigation'
 import { handleCreateCart } from 'app/actions'
 import {  useRouter } from 'next/navigation'
 
-const ShoppingCart = ({setIsOpenUser,setIsOpenShoppingCart,isOpenShoppingCart}) => {
+interface ShoppingCartProps {
+  setIsOpenUser:React.Dispatch<React.SetStateAction<boolean>>,
+  setIsOpenShoppingCart:React.Dispatch<React.SetStateAction<boolean>>,
+  isOpenShoppingCart:boolean,
+}
+
+const ShoppingCart = ({setIsOpenUser,setIsOpenShoppingCart,isOpenShoppingCart}:ShoppingCartProps) => {
 
   
   const [isBuying,setIsBuying] = useState<boolean>(false)

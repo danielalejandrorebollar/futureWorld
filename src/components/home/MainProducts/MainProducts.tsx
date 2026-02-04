@@ -1,8 +1,7 @@
 
 import Image from "next/image";
 import styles from './MainProducts.module.sass'
-import { getProducts } from "app/services/shopify/products";
-import { getCollectionByIdentifier, getCollectionProducts } from "app/services/shopify/collections";
+import {  getCollectionProducts } from "app/services/shopify/collections";
 // console.log("SHOPIFY_HOSTNAME:", process.env.SHOPIFY_HOSTNAME); 
 
 
@@ -19,15 +18,21 @@ export const MainProducts = async () => {
   // console.log(products)
 
   // console.log(process.env.NEXT_PUBLLIC_SHOPIFY_HOSTNAME,"asdasd")
+
+
+  if (!products.ok ) {
+  console.error(products.error);
+  return null;
+}
   return ( 
     
     <section>
       <h3 className={styles.titulo}>Nuevos Video Games</h3>
       <div className={styles.MainProducts}>
 
-          {  !!products && products.map( product =>{ 
+          {  !!products && products.data.map( product =>{ 
             // console.log(product)
-            const imageSrc = product.images.edges[0].node.originalSrc
+            const imageSrc = product.images.edges[0].node.originalSrc;
             // console.log(imageSrc)
             
             

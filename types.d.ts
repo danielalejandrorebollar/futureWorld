@@ -3,9 +3,19 @@ interface ErrorPageProps {
     reset: () =>void
     
 }
+
+type ImageNode = {
+  originalSrc: string;
+}
+type ImageEdge ={
+  node:ImageNode 
+}
+type ImageConnection = {
+  edges: ImageEdge[]
+}
 type ProductType = {
     id: string;
-    images: {edges:[]};
+    images: ImageConnection;
     title: string;
     description: string;
     price: number;
@@ -63,6 +73,7 @@ type CollectionByIdentifier = {
     collectionByIdentifier:Collection
 }
 
+
 type Collection = {
   id: string
   title: string
@@ -70,12 +81,24 @@ type Collection = {
   description: string
 }
 
+type CollectionResult = 
+  | { ok: true; data: Collection; error?: undefined }
+  | { ok: false; error: unknown, data?: undefined }
+  | { ok: false; error?: undefined, data?: undefined }
+
+
 type ProductResult =
-  | { ok: true; data: ProductType }
-  | { ok: false; error: string, data: null };
+  | { ok: true; data: ProductType; error?: undefined }
+  | { ok: false; error: unknown, data?: undefined }
+  | { ok: false; error?: unknown, data?: undefined }
+
+type ProductsResult =
+  | { ok: true; data: ProductType[]; error?: undefined }
+  | { ok: false; error: unknown, data?: undefined }
+  | { ok: false; error?: unknown, data?: undefined }
 
 
-  type CartItem = {
+type CartItem = {
     title: string;
     price:number;
     quantity: number;
@@ -134,4 +157,4 @@ type LineItemEdge = {
   error: unknown;
 };
 
- type OrdersResponse = OrdersSuccess | OrdersError;
+ type OrdersResponse = | OrdersSuccess | OrdersError;

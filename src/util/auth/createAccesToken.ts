@@ -11,8 +11,8 @@ interface createAccesTokenProps {
     password: string
 }
 
-export const createAccesToken = async (props:createAccesTokenProps) =>{
-    const {email,password} = props
+export const createAccesToken = async ({email,password}:createAccesTokenProps) =>{
+    
 
     const graphClient: GraphQLClient = GraphQLClientSingleton.getInstance().getClient();
     console.log("Antes del try de cookies y de la consulta del cliente para crear el token de shopify...........................\n",email,password)

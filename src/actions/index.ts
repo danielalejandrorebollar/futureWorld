@@ -46,7 +46,7 @@ const handleCreateUser = async (formData:FormData) => {
     
     if (!data?.customerCreate.customer) {
       console.log("Errores:................", data.customerCreate?.customerUserErrors);
-      return { ok: false };
+      return 
     }
     // console.log("Errores.....................................................\n",data.customerCreate.customerUserErrors)
     console.log("datos del cliente dentro de data............................. "+`/n`,data.customerCreate.customer)
@@ -70,7 +70,7 @@ const handleCreateUser = async (formData:FormData) => {
             console.log(cookieStore.get("accesToken"))
         }
       }else
-        return
+        return 
      
     
     
@@ -82,7 +82,9 @@ const handleCreateUser = async (formData:FormData) => {
     // }
     
   }catch(error){
-    console.log({mensaje:error,ok:"falló"})
+    console.log({mensaje:error,ok:false})
+    throw new Error(`Usuario no encontrado ${error}`)
+    
   } 
 
    redirect('/store')

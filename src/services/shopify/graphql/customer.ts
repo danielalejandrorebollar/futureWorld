@@ -21,11 +21,11 @@ const getCustomerOrders = async ():Promise<OrdersResponse> => {
     try {
         const { customer } = await graphqlClient.request(getOrdersQuery, variables)
         // console.log(customer)
-        const orders:Order[] = customer?.orders?.edges.map((edge:{node:string}) => edge.node)
+        const orders:Order[] = customer?.orders?.edges?.map((edge:{node:string}) => edge.node)
         console.log(orders)
         return {
             ok:true,
-            totalOrders: customer?.orders.totalCount,
+            totalOrders: customer.orders.totalCount,
             orders
 
         }

@@ -3,7 +3,7 @@ import { shopifyUrls } from "./urls";
 
 
 
-export const getProducts = async (): Promise<ProductType[]> => {
+export const getProducts = async (): Promise<ProductsResult> => {
 
   const query = `
     {
@@ -47,17 +47,18 @@ export const getProducts = async (): Promise<ProductType[]> => {
     });
 
     if (!response.ok) {
-      throw new Error(`HTTP error: ${response.status}`);
+      return {ok:false, error: response.status}
+      // throw new Error(`HTTP error: ${response.status}`);
     } 
 
     const {data:{products:{nodes}}} = (await response.json()) as GraphQLResponse<ProductsQuery>;
     // console.log(nodes)
     
-    return nodes  ;
+    return {ok:true, data:nodes }
 
   } catch (error) {
     console.error("Error al obtener productos:", error);
-    return [];
+    return {ok:false,error};
   }
 };
 
@@ -144,7 +145,7 @@ export const getProductById = async (id:string): Promise<ProductResult> => {
     return {
       ok:false,
       error: "error no se encontró el id del producto",
-      data: null,
+      data: undefined,
     };
   }
 };

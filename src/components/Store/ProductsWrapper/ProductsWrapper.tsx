@@ -2,10 +2,11 @@ import ProductCard from "../ProductCard/ProductCard"
 import styles from './ProductWrapper.module.sass'
 
 interface ProductsWrapperProps {
-    products: ProductType[] | null
+    products: ProductType[] 
 }
 
 const ProductsWrapper = ({products}: ProductsWrapperProps) => {
+  
   return (
     
     <div className={styles.ProdcutsWrapper}>
