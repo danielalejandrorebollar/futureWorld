@@ -14,7 +14,7 @@ const POST = async (request: Request) => {
     if(token !== env.CACHE_TOKEN){
          return Response.json({error: "Invalid token"},{status:401});
     }
-    revalidateTag(tag)
+    revalidateTag(tag,'max')
     return Response.json({succes: true})
 }
 
