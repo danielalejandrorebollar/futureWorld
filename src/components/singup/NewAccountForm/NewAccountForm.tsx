@@ -6,7 +6,7 @@ import styles from './NewAccountForm.module.sass'
 import { handleCreateUser } from 'app/actions'
 
 
-const NewAccountForm = () => {
+const NewAccountForm = async () => {
   
 
 
