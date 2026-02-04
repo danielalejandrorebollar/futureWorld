@@ -9,15 +9,7 @@ import { handleCreateUser } from 'app/actions'
 const NewAccountForm = () => {
   
 
-// const handleSubmit = async (e) =>{
-//   e.preventDefault()
-//   console.log(e.target)
-//   const formData = new FormData(e.target)
-//   // console.log(formData.get("first_name"))
-//   const data = await handleCreateUser(formData)
-//   console.log(data)
-//   router.push('/store')
-// }
+
 
 const loading = false
 
