@@ -25,11 +25,11 @@ interface CateogoryProps{
     console.log("categorias...",categories)
     if(categories){
         //  console.log("categorias...",categories)
-         productsByCollection = await getCollectionByIdentifier(categories?.[0])
+        productsByCollection = await getCollectionByIdentifier(categories?.[0])
         // console.log(productsByCollection, "Productos por coleccion", typeof productsByCollection) 
-         if(!productsByCollection.ok){
+        if(!productsByCollection.ok){
             products = {ok:false,data:undefined}
-         }else
+        }else
             products = await getCollectionProducts(productsByCollection.data.id)
         //  products = wait getProducts()
         // console.log("productos resultado de la busqueda por coleccion",products)
