@@ -6,24 +6,28 @@
     max-width: 80%;
     margin: 0 auto;
     margin-top: 50px
-    justify-content: center
+    
 
     
     
     h1
         font-size: 3rem
     &__images
-        
+        flex-grow: 1
+        flex-basis: 0
         position: relative
-        width: 70%
+        // width: 70%
         img
+            margin: 0 auto
             border-radius: 10px
             box-shadow: 0 0 2rem rgba(255, 255, 255, 0.2)
     &__info
+        flex-grow: 2
+        flex-basis: 0
         padding: 0 30px
         display: flex
         flex-direction: column
-        width: 90%
+        // width: 90%
         
 
         &__category
