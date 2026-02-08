@@ -38,7 +38,7 @@ const ProductView = ({product}: ProductViewProps) => {
               <h1 className={styles.ProductView__info__title}>{product.title}</h1>
               {/* <p className={styles.ProductView__info__category}>{product.tags}</p> */}
               <SanitizeHTML tag='p'>{product.description+'<p><p/>'}</SanitizeHTML>
-              <p className={styles.ProductView__info__desscription}>{product.description}</p>
+              {/* <p className={styles.ProductView__info__desscription}>{product.description}</p> */}
               <span className={styles.ProductView__info__price}> ${product.price}</span>
               <ProductViewItemsOrder maxQuantity={product.quantity} product={product}/>
             </section>
