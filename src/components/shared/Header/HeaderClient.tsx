@@ -129,7 +129,7 @@ const HeaderClient = ({customer}:HeaderClientProps) => {
                 
                       
             
-              : <Link href="/login"> Login</Link>}
+              : <Link  href="/login"> Login</Link>}
             
             {/* {isOpen && hastItems && (
             <div className={styles.ShoppingCart__items}>

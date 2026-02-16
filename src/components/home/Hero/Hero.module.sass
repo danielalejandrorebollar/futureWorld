@@ -1,22 +1,41 @@
 @use '../../../sass/index' as v
+
 .Hero
     text-align: center
     margin-bottom: 2rem
     z-index: 10
+    
+    
 
     & > h1
-        font-size: 4rem
+        font-size: clamp(2.5rem,7vw,5rem)
         width: 60%
         background: linear-gradient(270deg, #4f56ff, #ff4980)
         background-clip: text
         -webkit-text-fill-color: transparent
-        margin-bottom: 0
         margin: 0 auto
+        margin-bottom: 5px
+        margin-top: 15px
         letter-spacing: 0.05em
+        text-wrap: pretty
+        position: relative
+        
+        &::before
+            content: ''
+            position: absolute
+            inset: 0; /* top:0; right:0; bottom:0; left:0 */
+            background-color: rgba(246, 244, 244, 0.334); 
+            opacity: .3
+            z-index: 1
 
     & > h2
-        font-size: 1.5rem
+        font-size: clamp(1rem,4vw,2rem)
         margin: 0 0 3rem 0
         color: v.$color_secondary
         text-align: center
         
+    @media screen and ( max-width: 540px )
+        margin-bottom: 1rem
+        & > h1
+            margin-top: 5px
+    

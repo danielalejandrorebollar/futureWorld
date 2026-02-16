@@ -2,6 +2,7 @@
 import styles from './Description.module.sass'
 import classNames from 'classnames/bind'
 import { useState } from 'react'
+import Image from "next/image";
 
 export const Description = () => {
   const [hasBorder, setHasBorder] = useState(false)
@@ -24,11 +25,11 @@ export const Description = () => {
     
     <section className={styles.Description}>
       {hasBorder&&<button style={{ border: '2px solid red' }}>Con borde</button>}
-      <button className={buttonStyles} onClick={()=> handleClick()}>
+      {/* <button className={buttonStyles} onClick={()=> handleClick()}> */}
         <div className={styles.Description__imageContainer}>
           
-          {/* <Image 
-            src="/images/maestro.jpg"
+          <Image 
+            src="/images/zelda-breath-of-the-wild.webp"
             alt="products" 
             // width={500} 
             // height={300} 
@@ -37,10 +38,10 @@ export const Description = () => {
             quality={30}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          /> */}
+          /> 
 
         </div>
-      </button>
+      {/* </button> */}
       <div className={styles.Description__text}>
         <div>
           <h2>Bring the future Video Games</h2>
