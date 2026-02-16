@@ -1,11 +1,10 @@
 "use client"
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import dynamic from 'next/dynamic'
 import styles from './Header.module.sass'
 import { handleLogout } from 'app/actions'
 import { usePathname, useRouter } from 'next/navigation'
-// import { Head } from 'next/document'
 
 const NoSSRShoppingCart = dynamic(()=>import('../ShoppingCart'),{ssr:false})
 
@@ -43,19 +42,40 @@ const HeaderClient = ({customer}:HeaderClientProps) => {
     setIsOpenUser(false)
   },[pathname])
 
+  const stickyRef = useRef(false);
+  const SHOW_AT = 2;
+  const HIDE_AT = 20;
+
   useEffect(()=>{
+    const update = () =>{
+        let nextState = stickyRef.current;
+        const y = window.scrollY;
+
+        if(!stickyRef.current && y > HIDE_AT){
+          nextState = true;
+        } 
+        if(stickyRef.current && y < SHOW_AT){
+          nextState = false;
+        } 
+
+        if(nextState !== stickyRef.current){
+          stickyRef.current = nextState;
+          setIsSticky(nextState);
+          // console.log("scrol",window.scrollY );
+        }
+        
+      }
+
 
     const handleScroll = () =>{
-      if(window.scrollY > 20){
-        setIsSticky(true)
-        console.log("scrol",window.scrollY )
-
-      }else{
-        setIsSticky(false)
-      }
+      
+      requestAnimationFrame(update);
+      
+      
     }
 
     window.addEventListener('scroll', handleScroll);
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
@@ -70,7 +90,7 @@ const HeaderClient = ({customer}:HeaderClientProps) => {
         
             <nav>
               <ul>
-                <Link href="/">
+                <Link href="/" >
                 <li>Inicio</li>
 
                 </Link>

@@ -14,8 +14,8 @@ const Header = async () =>{
   const result: CustomerResponse = await validateAccessToken()
   
     return(
-         <HeaderClient customer={result}/>
+          <HeaderClient customer={result}/>
     )
 }
 
-export {Header} ;
+export { Header };

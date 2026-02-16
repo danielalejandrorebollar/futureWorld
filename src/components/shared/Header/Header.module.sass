@@ -6,20 +6,33 @@
 .Header
 
     width: 100%
+    background-color: transparent
     position: sticky
     top: 0
     z-index: 40
-    // transform: translateY(-100%)
-    transition: heigth 1s ease
+    height: 60px
+    opacity: 1
+    transition: opacity .4s ease, background .4s ease, box-shadow .4s ease
+    will-change:  opacity  
 
     &--sticky
-        background: transparent
         box-shadow: 0 4px 10px rgba(30, 18, 159, 0.1)
-        background: v.$color_primary
+        background-color: #1a1a1a
         margin: 0 auto
-        transform: translateY(0%)
-        heigth: 80px
+        // animation: myAnmtation 4s ease-out
+        opacity: .9
+        box-shadow: 0 4px 40px rgba(30,18,159,.1)
+        // height: 50px
 
+        @keyframes myAnimation 
+            0%
+                transform: translateY(-100%)
+                opacity: 1
+            50%
+                transform: translateY(-50%)
+            100%
+                opacity: .3
+                transform: translateY(0)
 
 
     &__contenedor

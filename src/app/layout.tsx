@@ -8,6 +8,7 @@ import { Hero } from 'app/components/home/Hero';
 import  'app/sass/globals.sass'
 import {Roboto} from 'next/font/google'
 import { afterEach } from "node:test";
+import { ScrollToTop } from "app/components/shared/ScrollToTop";
 
 const roboto = Roboto({
   weight: ["100","300","400","600","700",],
@@ -35,7 +36,8 @@ export default function RootLayout({ children,}: Readonly<{children: React.React
     <html lang="en">
       {/* <body className={`${geistSans.variable} ${geistMono.variable}`}> */}
       <body className={roboto.className}>
-      <Header/>
+        <ScrollToTop/>
+        <Header/>
       
         {children}
       <Footer/>
