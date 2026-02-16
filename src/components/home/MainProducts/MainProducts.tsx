@@ -8,8 +8,7 @@ import {  getCollectionProducts } from "app/services/shopify/collections";
 
 export const MainProducts = async () => {
 
-  
- 
+
   const products =  await getCollectionProducts('gid://shopify/Collection/504500814143')
   // const response = await fetch('http://localhost:3000/api')
   // const productos = await response.json()

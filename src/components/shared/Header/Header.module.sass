@@ -1,89 +1,115 @@
 @use '../../../sass/index' as v
-.Header
-    padding-top: 10px
-    display: flex
-    justify-content: space-between
-    width: 90%
 
-    ul
-        display: flex
-        flex-direction: row
-        gap: 2rem
-        justify-content: center
-        
-        a
-            text-decoration: none 
-            font-size: 1.5rem
-           
-            li
-                color: v.$color_secondary_transparent
-                list-style: none
-            
-    > h1
-        font-size: 3rem
-        background-image: linear-gradient(270deg, #4f56ff, #ff4980)
-        background-clip: text
-        color: v.$color_primary
+
+
     
-    > h2
-        font-size: 2rem
-        color: v.$color_secondary
-        text-align: center
+.Header
 
-    &__user
-        color: v.$gradient
-        margin: 10px
-        margin-right: 20px
+    width: 100%
+    position: sticky
+    top: 0
+    z-index: 40
+    // transform: translateY(-100%)
+    transition: heigth 1s ease
+
+    &--sticky
+        background: transparent
+        box-shadow: 0 4px 10px rgba(30, 18, 159, 0.1)
+        background: v.$color_primary
+        margin: 0 auto
+        transform: translateY(0%)
+        heigth: 80px
+
+
+
+    &__contenedor
+
+        padding-top: 10px
         display: flex
-        flex-direction: row
-        align-items: center
-        gap: 10px
-        position: relative
+        justify-content: space-between
+        width: 90%
+        margin: 0 auto
         z-index: 40
-
-        a
-            text-decoration: none 
-            color: v.$gradient
-            font-size: 1.5rem 
-        li
-            color: v.$color_secondary
-            list-style: none
-            font-size: 1.5rem
+        
         
 
-        &__menuUser
-            position: absolute
-            background: v.$color_primary
-            border: 1px solid v.$border_color
-            border-radius: 8px
-            right: 0
-            max-width: 320px
-            
-        &__buttonLogin
-            background-color: transparent
-            border: none
-            cursor: pointer
-            color: white
-            position: relative
-        
-        &__myAccount
-            background-color: transparent
-            border: none
-            color: white
-            position: absolute
-            left: 0
-            display: block
+        ul
             display: flex
-            flex-direction: column
-
-        &__buttonLogout
-            background-color: transparent
-            border: none
-            cursor: pointer
-            color: white
-            left: 0
-            display: block
+            flex-direction: row
+            gap: 2rem
+            justify-content: center
             
+            a
+                text-decoration: none 
+                font-size: 1.5rem
             
+                li
+                    color: v.$color_secondary_transparent
+                    list-style: none
                 
-       
+        > h1
+            font-size: 3rem
+            background-image: linear-gradient(270deg, #4f56ff, #ff4980)
+            background-clip: text
+            color: v.$color_primary
+        
+        > h2
+            font-size: 2rem
+            color: v.$color_secondary
+            text-align: center
+
+        &__user
+            color: v.$gradient
+            margin: 10px
+            margin-right: 20px
+            display: flex
+            flex-direction: row
+            align-items: center
+            gap: 10px
+            position: relative
+            z-index: 40
+
+            a
+                text-decoration: none 
+                color: v.$gradient
+                font-size: 1.5rem 
+            li
+                color: v.$color_secondary
+                list-style: none
+                font-size: 1.5rem
+            
+
+            &__menuUser
+                position: absolute
+                background: v.$color_primary
+                border: 1px solid v.$border_color
+                border-radius: 8px
+                right: 0
+                max-width: 320px
+                
+            &__buttonLogin
+                background-color: transparent
+                border: none
+                cursor: pointer
+                color: white
+                position: relative
+            
+            &__myAccount
+                background-color: transparent
+                border: none
+                color: white
+                position: absolute
+                left: 0
+                display: block
+                display: flex
+                flex-direction: column
+
+            &__buttonLogout
+                background-color: transparent
+                border: none
+                cursor: pointer
+                color: white
+                left: 0
+                display: block
+
+    

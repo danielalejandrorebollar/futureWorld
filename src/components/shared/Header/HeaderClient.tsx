@@ -17,9 +17,12 @@ const HeaderClient = ({customer}:HeaderClientProps) => {
 
   const [isOpenUser,setIsOpenUser] = useState<boolean>(false)
   const [isOpenShoppingCart,setIsOpenShoppingCart] = useState<boolean>(false)
+  const [isSticky,setIsSticky] = useState<boolean>(false)
 
   const pathname = usePathname()
   const router = useRouter()
+
+
 
   const handleOpen = ()=>{
       setIsOpenUser(!isOpenUser)
@@ -33,75 +36,99 @@ const HeaderClient = ({customer}:HeaderClientProps) => {
 
   const handleButtonMyAccount = () =>{
     router.push('/my-account')
-     setIsOpenUser(!isOpenUser)
+    setIsOpenUser(!isOpenUser)
   }
 
   useEffect(()=>{
     setIsOpenUser(false)
   },[pathname])
+
+  useEffect(()=>{
+
+    const handleScroll = () =>{
+      if(window.scrollY > 20){
+        setIsSticky(true)
+        console.log("scrol",window.scrollY )
+
+      }else{
+        setIsSticky(false)
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  },[])
+
+
   
   return (
-    <header className={styles.Header}>
-          <nav>
-            <ul>
-              <Link href="/">
-               <li>Inicio</li>
+    <header  className={ `${styles.Header} ${ isSticky ? styles["Header--sticky"]  : ""}`  }  >
+      <div className={styles.Header__contenedor}>
 
-              </Link>
-              <Link href="/store">
-                <li>Tienda</li>
+        
+            <nav>
+              <ul>
+                <Link href="/">
+                <li>Inicio</li>
+
+                </Link>
+                <Link href="/store">
+                  <li>Tienda</li>
+                
+                </Link>
+                <Link href="/test">
+                  <li>Test</li>
+                
+                </Link>
+              </ul>
+            </nav>
+
+            <div className={styles.Header__contenedor__user}>
+
+              {customer?.ok ? 
               
-              </Link>
-              <Link href="/test">
-                <li>Test</li>
-              
-              </Link>
-            </ul>
-          </nav>
+                <div>
+                  <button className={styles.Heade__contenedor__user__buttonLogin} onClick={handleOpen}>
+                    <li>hola {customer?.customer?.firstName}</li> 
+                  </button>
+                  { isOpenUser && 
+                    <div className={styles.Header__contenedor__user__myAccount}>
+                      <button onClick={handleButtonMyAccount} className={styles.Header__user__buttonLogout}>
+                        My Account
+                      </button>
+                      <button onClick={handleButtonLogout} className={styles.Header__contenedor__user__buttonLogout}>
+                        Log Out
+                      </button>
+                    </div>
+                      
+                  }
 
-          <div className={styles.Header__user}>
-
-            {customer?.ok ? 
+                </div>
+                
+                      
             
-              <div>
-                <button className={styles.Header__user__buttonLogin} onClick={handleOpen}>
-                  <li>hola {customer?.customer?.firstName}</li> 
-                </button>
-                { isOpenUser && 
-                  <div className={styles.Header__user__myAccount}>
-                    <button onClick={handleButtonMyAccount} className={styles.Header__user__buttonLogout}>
-                       My Account
-                    </button>
-                    <button onClick={handleButtonLogout} className={styles.Header__user__buttonLogout}>
-                       Log Out
-                    </button>
-                  </div>
-                    
-                }
-
-              </div>
-              
-                    
-          
-             : <Link href="/login"> Login</Link>}
-          
-          {/* {isOpen && hastItems && (
-          <div className={styles.ShoppingCart__items}>
-            {cart.map(item=>(
-              
-              <ShoppingCartItem key={item.id} cartItem={item}/>
-              
-              
-              
-            ))}
-            <button onClick={handleBuy} className={styles.ShoppingCart__buyButton}>Buy</button>
-          </div>
-        )} */}
-            <NoSSRShoppingCart 
-              setIsOpenUser={setIsOpenUser} 
-              setIsOpenShoppingCart={setIsOpenShoppingCart}
-              isOpenShoppingCart={isOpenShoppingCart}  />
-              
+              : <Link href="/login"> Login</Link>}
+            
+            {/* {isOpen && hastItems && (
+            <div className={styles.ShoppingCart__items}>
+              {cart.map(item=>(
+                
+                <ShoppingCartItem key={item.id} cartItem={item}/>
+                
+                
+                
+              ))}
+              <button onClick={handleBuy} className={styles.ShoppingCart__buyButton}>Buy</button>
+            </div>
+          )} */}
+              <NoSSRShoppingCart 
+                setIsOpenUser={setIsOpenUser} 
+                setIsOpenShoppingCart={setIsOpenShoppingCart}
+                isOpenShoppingCart={isOpenShoppingCart}  />
+                
+            </div>
           </div>
         </header>
   )
